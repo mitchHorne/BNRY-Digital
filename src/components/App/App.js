@@ -6,11 +6,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Slider>
+        <Slider duration={1000}>
           <div background='blue'></div>
           <div background='red'></div>
           <div background='yellow'></div >
-          <div background='black'></div >
+          <div background='teal'></div >
         </Slider >
       </div >
     );
