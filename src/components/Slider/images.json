@@ -1,0 +1,22 @@
+[
+   {
+      "url": "./images/image-1.jpg",
+      "description": "Image 1's insightful description"
+   },
+   {
+      "url": "./images/image-2.jpg",
+      "description": "Image 2's joyous description"
+   },
+   {
+      "url": "./images/image-3.jpg",
+      "description": "Image 3's brilliant description"
+   },
+   {
+      "url": "./images/image-4.jpg",
+      "description": "Image 4's awesome description"
+   },
+   {
+      "url": "./images/image-5.jpg",
+      "description": "Image 5's silly description"
+   }
+]

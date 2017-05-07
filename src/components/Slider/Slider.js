@@ -1,4 +1,5 @@
 import React from 'react';
+const data = require('./images.json');
 
 export default class Slider extends React.Component {
       constructor(props) {
@@ -15,22 +16,22 @@ export default class Slider extends React.Component {
             };
       }
 
-      initProps({ width = "100%", height = "400px", duration = 500 }) {
+      initProps({ width = "100%", height = "600px", duration = 500 }) {
             this.width = width;
             this.height = height;
             this.duration = duration + 'ms';
       }
 
-      createSlides({ children }) {
-            this.slides = children.map((slide, index) => {
-                  const backgroundColor = slide.props.background;
+      createSlides() {
+            this.slides = data.map((data, index) => {
                   const style = Object.assign({
                         width: this.width,
                         height: this.height,
                         flexShrink: 0,
-                        background: backgroundColor,
+                        background: `url(${data.url})`,
+                        backgroundSize: 'cover',
                   });
-                  return React.cloneElement(slide, {
+                  return React.createElement('div', {
                         style,
                         key: index
                   });
