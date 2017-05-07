@@ -28,7 +28,7 @@ export default class Slider extends React.Component {
                         width: this.width,
                         height: this.height,
                         flexShrink: 0,
-                        background: `url(${data.url})`,
+                        background: `url(${data.url}) center`,
                         backgroundSize: 'cover',
                   });
                   return React.createElement('div', {
