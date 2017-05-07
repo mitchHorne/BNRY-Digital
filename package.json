@@ -4,7 +4,8 @@
   "private": true,
   "dependencies": {
     "react": "15.5.4",
-    "react-dom": "15.5.4"
+    "react-dom": "15.5.4",
+    "react-tooltip": "^3.3.0"
   },
   "devDependencies": {
     "enzyme": "2.8.2",

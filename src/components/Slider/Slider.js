@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactTooltip from 'react-tooltip';
 import './slider.css';
 
 const data = require('./images.json');
@@ -14,7 +15,7 @@ export default class Slider extends React.Component {
             ]);
             this.state = {
                   key: 0,
-                  direction: 'left'
+                  direction: 'left',
             };
       }
 
@@ -95,7 +96,7 @@ export default class Slider extends React.Component {
 
             this.setState({
                   key,
-                  direction: 'left'
+                  direction: 'left',
             });
       }
 
@@ -116,6 +117,25 @@ export default class Slider extends React.Component {
             if (key === data.length) return data[0].description;
             return data[key].description;
       }
+
+      getPrevSlide() {
+            const key = this.state.key;
+            const message = 'Previous: Image#';
+
+            if (key === 0) return message + data.length;
+            if (key === -1) return message + (data.length - 1);
+            return message + key;
+      }
+
+      getNextSlide() {
+            const key = this.state.key;
+            const message = 'Next: Image#';
+
+            if (key === -1 || key === data.length - 1) return message + 1;
+            if (key === data.length) return message + 2;
+            return message + (key + 2);
+      }
+
 
       getStyle() {
             return {
@@ -162,15 +182,17 @@ export default class Slider extends React.Component {
             return (
                   <div className="infinite-slider-container"
                         style={style.container}>
-                        <div className="arrows" style={leftArrow} onClick={this.onSlideLeft}><i className="fa fa-angle-left fa-fw fa-3x"></i></div>
+                        <div data-tip data-for="prevTip" onClick={() => ReactTooltip.rebuild()} className="arrows" style={leftArrow} onClick={this.onSlideLeft}><i className="fa fa-angle-left fa-fw fa-3x"></i></div>
                         <div className="infinite-slider-wrapper"
                               style={style.wrapper}>
                               {this.head}
                               {this.slides}
                               {this.tail}
                         </div>
-                        <div className="arrows" style={rightArrow} onClick={this.onSlideRight}><i className="fa fa-angle-right fa-fw fa-3x"></i></div>
+                        <div data-tip data-for="nextTip" onClick={() => ReactTooltip.rebuild()} className="arrows" style={rightArrow} onClick={this.onSlideRight}><i className="fa fa-angle-right fa-fw fa-3x"></i></div>
                         <h1 className="description">{this.renderDescription()}</h1>
+                        <ReactTooltip id="prevTip" globalEventOff="click" getContent={() => this.getPrevSlide()} place="right" effect="solid" />
+                        <ReactTooltip id="nextTip" globalEventOff="click" getContent={() => this.getNextSlide()} place="left" effect="solid" />
                   </div>
             );
       }
