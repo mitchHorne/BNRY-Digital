@@ -1,3 +1,10 @@
 .arrows:hover {
    cursor: pointer;
 }
+
+/* MAde it a postion fixed as it was the easiest way to display it */
+.description {
+   position: fixed;
+   top: 600px;
+   left: 30%;
+}

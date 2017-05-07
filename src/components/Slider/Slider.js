@@ -109,6 +109,14 @@ export default class Slider extends React.Component {
             });
       }
 
+      renderDescription() {
+            const key = this.state.key;
+
+            if (key === -1) return data[data.length - 1].description;
+            if (key === data.length) return data[0].description;
+            return data[key].description;
+      }
+
       getStyle() {
             return {
                   container: {
@@ -162,6 +170,7 @@ export default class Slider extends React.Component {
                               {this.tail}
                         </div>
                         <div className="arrows" style={rightArrow} onClick={this.onSlideRight}><i className="fa fa-angle-right fa-fw fa-3x"></i></div>
+                        <h1 className="description">{this.renderDescription()}</h1>
                   </div>
             );
       }
