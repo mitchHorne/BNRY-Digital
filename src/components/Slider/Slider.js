@@ -1,4 +1,6 @@
 import React from 'react';
+import './slider.css';
+
 const data = require('./images.json');
 
 export default class Slider extends React.Component {
@@ -125,9 +127,10 @@ export default class Slider extends React.Component {
 
       getLeftArrowStyle() {
             return {
-                  background: '#fff',
-                  position: 'absolute',
+                  background: '#000',
+                  color: '#fff',
                   left: 0,
+                  position: 'absolute',
                   top: '50%',
                   zIndex: 2,
             }
@@ -135,7 +138,8 @@ export default class Slider extends React.Component {
 
       getRightArrowStyle() {
             return {
-                  background: '#fff',
+                  background: '#000',
+                  color: '#fff',
                   position: 'absolute',
                   right: 0,
                   top: '50%',
@@ -150,14 +154,14 @@ export default class Slider extends React.Component {
             return (
                   <div className="infinite-slider-container"
                         style={style.container}>
-                        <div style={leftArrow} onClick={this.onSlideLeft}>Left</div>
+                        <div className="arrows" style={leftArrow} onClick={this.onSlideLeft}><i className="fa fa-angle-left fa-fw fa-3x"></i></div>
                         <div className="infinite-slider-wrapper"
                               style={style.wrapper}>
                               {this.head}
                               {this.slides}
                               {this.tail}
                         </div>
-                        <div style={rightArrow} onClick={this.onSlideRight}>Right</div>
+                        <div className="arrows" style={rightArrow} onClick={this.onSlideRight}><i className="fa fa-angle-right fa-fw fa-3x"></i></div>
                   </div>
             );
       }
