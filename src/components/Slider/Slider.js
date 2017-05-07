@@ -175,10 +175,36 @@ export default class Slider extends React.Component {
             }
       }
 
+      getLeftDiv() {
+            return {
+                  background: 'rgba(0,0,0,0)',
+                  height: this.height,
+                  left: 0,
+                  position: 'absolute',
+                  top: 0,
+                  width: '50%',
+                  zIndex: 1,
+            }
+      }
+
+      getRightDiv() {
+            return {
+                  background: 'rgba(0,0,0,0)',
+                  height: this.height,
+                  position: 'absolute',
+                  right: 0,
+                  top: 0,
+                  width: '50%',
+                  zIndex: 1,
+            }
+      }
+
       render() {
             const style = this.getStyle();
             const leftArrow = this.getLeftArrowStyle();
             const rightArrow = this.getRightArrowStyle();
+            const leftDiv = this.getLeftDiv();
+            const rightDiv = this.getRightDiv();
             return (
                   <div className="infinite-slider-container"
                         style={style.container}>
@@ -191,6 +217,10 @@ export default class Slider extends React.Component {
                         </div>
                         <div data-tip data-for="nextTip" onClick={() => ReactTooltip.rebuild()} className="arrows" style={rightArrow} onClick={this.onSlideRight}><i className="fa fa-angle-right fa-fw fa-3x"></i></div>
                         <h1 className="description">{this.renderDescription()}</h1>
+
+                        <div style={leftDiv} onClick={this.onSlideLeft}></div>
+                        <div style={rightDiv} onClick={this.onSlideRight}></div>
+
                         <ReactTooltip id="prevTip" globalEventOff="click" getContent={() => this.getPrevSlide()} place="right" effect="solid" />
                         <ReactTooltip id="nextTip" globalEventOff="click" getContent={() => this.getNextSlide()} place="left" effect="solid" />
                   </div>
